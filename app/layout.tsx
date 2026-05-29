@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -8,15 +8,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Linda Haugen — UX Designer",
+  title: "Linda Haugen — UX-designer",
   description:
-    "Product & UX designer crafting thoughtful digital experiences. Based in Oslo.",
+    "Samfunnsengasjert designer med over ni års erfaring innen tjenestedesign, UX, universell utforming og designsystemer.",
 };
 
 export default function RootLayout({
@@ -25,10 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn("dark h-full scroll-smooth antialiased", geistSans.variable, geistMono.variable)}
-    >
+    <html lang="no" className={cn("h-full scroll-smooth antialiased", geistSans.variable)}>
       <body className="min-h-full font-sans">{children}</body>
     </html>
   );

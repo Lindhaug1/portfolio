@@ -1,41 +1,36 @@
 import Link from "next/link";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Om meg", active: true },
+  { href: "#contact", label: "Kontakt", active: false },
 ];
 
 export function Nav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#050505]/70 backdrop-blur-xl">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
+    <header className="sticky top-0 z-50 border-b border-portfolio-text/5 bg-portfolio-white/80 backdrop-blur-md">
+      <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6 md:px-8">
         <Link
           href="/"
-          className="text-sm font-medium tracking-tight text-white transition-opacity hover:opacity-70"
+          className="text-sm font-semibold tracking-tight text-portfolio-text"
         >
           Linda Haugen
         </Link>
 
-        <ul className="hidden items-center gap-10 md:flex">
+        <div className="flex items-center gap-1">
           {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm text-zinc-400 transition-colors hover:text-white"
-              >
-                {link.label}
-              </Link>
-            </li>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={
+                link.active
+                  ? "rounded-lg bg-portfolio-primary px-3.5 py-1.5 text-sm font-medium text-portfolio-text"
+                  : "rounded-lg px-3.5 py-1.5 text-sm font-medium text-portfolio-text/70 transition-colors hover:bg-portfolio-primary-light hover:text-portfolio-text"
+              }
+            >
+              {link.label}
+            </Link>
           ))}
-        </ul>
-
-        <Link
-          href="#contact"
-          className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-zinc-200 transition-colors hover:border-white/20 hover:bg-white/[0.08]"
-        >
-          Get in touch
-        </Link>
+        </div>
       </nav>
     </header>
   );
